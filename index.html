@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Porsche Sales Intelligence — leitura visual de vendas para apoiar decisões comerciais.">
+<title>Porsche Sales Intelligence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="shell">
+<header class="topbar"><div class="brand"><span class="brand-mark">P</span><div><b>PORSCHE</b><small>SALES INTELLIGENCE</small></div></div><div class="top-actions"><span class="topnote">DADOS SANITIZADOS · VISÃO COMERCIAL</span><button class="theme-toggle" id="themeToggle" type="button" aria-label="Ativar modo escuro"><span class="theme-icon">☾</span><span class="theme-label">DARK</span></button></div></header>
+<main>
+<section class="hero"><div><span class="eyebrow">DATA → INSIGHT → DECISÃO</span><h1>O que as vendas<br><em>estão dizendo?</em></h1><p>Uma leitura progressiva da base comercial: primeiro o panorama, depois os sinais e, por fim, os detalhes que ajudam a tomar decisões.</p></div><div class="hero-index"><b>01</b><span>VISÃO GERAL</span></div></section>
+
+<section class="filters"><div class="filter-head"><span class="eyebrow">EXPLORAR A BASE</span><button id="reset">Limpar filtros ↺</button></div>
+<div class="filters-grid">
+<label>Modelo<select id="model"><option value="">Todos</option></select></label>
+<label>Estado<select id="state"><option value="">Todos</option></select></label>
+<label>Cidade<select id="city"><option value="">Todas</option></select></label>
+<label>Ano do modelo<select id="year"><option value="">Todos</option></select></label>
+<label>Pagamento<select id="payment"><option value="">Todos</option></select></label>
+<label>Entrega<select id="delivery"><option value="">Todos</option></select></label>
+</div></section>
+
+<section class="kpis" aria-label="Indicadores principais">
+<article class="kpi-sales"><div class="kpi-top"><span>VENDAS</span><span class="kpi-symbol" aria-hidden="true">↗</span></div><strong id="sales">—</strong><small>registros no recorte</small></article>
+<article class="kpi-revenue"><div class="kpi-top"><span>RECEITA TOTAL</span><span class="kpi-symbol" aria-hidden="true">$</span></div><strong id="revenue">—</strong><small>valor bruto das vendas</small><span class="kpi-flag">INDICADOR PRINCIPAL</span></article>
+<article class="kpi-ticket"><div class="kpi-top"><span>TICKET MÉDIO</span><span class="kpi-symbol" aria-hidden="true">Ø</span></div><strong id="ticket">—</strong><small>receita por venda</small></article>
+<article class="kpi-leader"><div class="kpi-top"><span>MODELO MAIS VENDIDO</span><span class="kpi-symbol" aria-hidden="true">★</span></div><strong id="leader">—</strong><small>maior número de vendas</small></article>
+</section>
+
+<section class="pulse">
+<div class="section-label"><span class="section-no">02</span><div><span class="eyebrow">PULSO DA BASE</span><p>Três sinais para entender o recorte antes de entrar nos gráficos.</p></div></div>
+<div class="pulse-grid">
+<article><span>MODELOS</span><strong id="pulseModels">—</strong><small>modelos presentes no recorte</small></article>
+<article><span>COBERTURA</span><strong id="pulseCities">—</strong><small>cidades representadas</small></article>
+<article><span>CONCENTRAÇÃO</span><strong id="pulseConcentration">—</strong><small>vendas nos 3 principais estados</small><em id="pulseConcentrationDetail">—</em></article>
+<article><span>PAGAMENTO LÍDER</span><strong id="pulsePayment">—</strong><small id="pulsePaymentDetail">—</small></article>
+</div>
+</section>
+
+<section class="reading">
+<div class="section-label"><span class="section-no">03</span><div><span class="eyebrow" id="read-kicker">LEITURA DA BASE</span><p>Uma camada de interpretação gerada a partir dos dados filtrados.</p></div></div>
+<div class="reading-card">
+<div class="reading-main"><span class="red-dot"></span><h2 id="read-title">—</h2><p id="read-text">—</p><ul class="reading-bullets"><li id="read-bullet-one">—</li><li id="read-bullet-two">—</li></ul></div>
+<div class="reading-signals"><div><span>INSIGHT DE MERCADO</span><p id="read-signal">—</p></div><div><span>PRÓXIMO OLHAR</span><p id="read-action">—</p></div></div>
+</div>
+</section>
+
+<section class="question"><div class="qhead"><div><span class="eyebrow">PERGUNTA 01</span><h2>Onde está concentrada a receita?</h2><p>Compare os modelos por valor gerado, do maior para o menor.</p></div><span>Q1</span></div><div class="chart large"><p class="chart-note" id="revenueNote">Os modelos serão ordenados pela receita.</p><canvas id="revenueChart"></canvas></div><aside class="insight-card" id="revenueInsight"><span class="insight-icon">↗</span><div><b>Principal contribuição</b><p id="revenueInsightText">A análise será atualizada conforme os filtros.</p></div></aside></section>
+
+<section class="split">
+<article class="question"><div class="qhead"><div><span class="eyebrow">PERGUNTA 02</span><h2>Onde as vendas acontecem?</h2><p>Estados com mais registros de venda no recorte selecionado.</p></div><span>Q2</span></div><div class="chart"><p class="chart-note" id="marketNote">As barras mostram os estados com mais vendas.</p><canvas id="marketChart"></canvas></div><aside class="insight-card" id="marketInsight"><span class="insight-icon">⌖</span><div><b>Concentração por estado</b><p id="marketInsightText">A análise será atualizada conforme os filtros.</p></div></aside></article>
+<article class="question"><div class="qhead"><div><span class="eyebrow">PERGUNTA 03</span><h2>Como as vendas são pagas?</h2><p>Participação das formas de pagamento.</p></div><span>Q3</span></div><div class="chart"><canvas id="paymentChart"></canvas></div><aside class="insight-card" id="paymentInsight"><span class="insight-icon">◉</span><div><b>Forma de pagamento líder</b><p id="paymentInsightText">A análise será atualizada conforme os filtros.</p></div></aside></article>
+</section>
+
+<section class="executive-summary"><div class="summary-heading"><span class="eyebrow">06 · FECHAMENTO EXECUTIVO</span><h2>Em 30 segundos</h2><p>Os principais sinais do recorte selecionado, reunidos em uma única leitura.</p></div><div class="summary-grid"><article><span>RECEITA</span><strong id="summaryRevenue">—</strong></article><article><span>MODELO COM MAIOR RECEITA</span><strong id="summaryRevenueModel">—</strong></article><article><span>MAIOR VOLUME DE VENDAS</span><strong id="summarySalesModel">—</strong></article><article><span>ESTADO LÍDER</span><strong id="summaryState">—</strong></article><article><span>PAGAMENTO MAIS USADO</span><strong id="summaryPayment">—</strong></article></div></section>
+<section class="context"><div class="limitations"><span class="eyebrow">07 · ALÉM DA VENDA</span><h2>O que este painel não mede</h2><p>Esta base descreve vendas e status operacionais. Para avaliar a experiência do cliente, seriam necessários dados complementares:</p><ul><li>Satisfação do cliente (CSAT)</li><li>Net Promoter Score (NPS)</li><li>Percepção da marca</li><li>Sentimento e voz do cliente (VoC)</li></ul></div><div class="delivery"><span>CONTEXTO OPERACIONAL</span><strong id="deliveryLeader">—</strong><small id="deliveryDetail">—</small><p class="delivery-note">Status de entrega não equivale a uma medida de satisfação.</p></div></section>
+
+<footer><div><b>Porsche Sales Intelligence</b><span>Projeto de dados, IA e tomada de decisão</span></div><span>BASE SANITIZADA · DADOS COMERCIAIS</span></footer>
+</main></div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script><script src="js/dashboard.js"></script>
+</body></html>
