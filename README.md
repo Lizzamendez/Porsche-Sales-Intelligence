@@ -3,8 +3,8 @@ Dados de vendas transformados em leitura comercial
 Dashboard interativo desenvolvido como projeto prático do bootcamp Reclame AQUI — Dados e IA na Prática, da DIO. O projeto demonstra como preparar uma base sanitizada, formular perguntas de negócio e usar visualização e IA para transformar dados em informações mais fáceis de interpretar.
 Publicação: antes da entrega, substitua os campos de URL abaixo pelos endereços reais do seu repositório e da dashboard publicada. Não envie o README com os campos de exemplo.
 
-- Dashboard publicada: ADICIONE_A_URL_REAL_DO_GITHUB_PAGES
-- Repositório público: ADICIONE_A_URL_REAL_DO_REPOSITORIO
+- Dashboard publicada: https://lizzamendez.github.io/Porsche-Sales-Intelligence/
+- Repositório público: https://github.com/Lizzamendez/Porsche-Sales-Intelligence
 1. Objetivo do projeto
 Criar uma dashboard web que permita explorar dados de vendas de veículos Porsche por modelo, localização, ano do modelo, forma de pagamento e situação da entrega. A interface foi pensada para leitura progressiva: primeiro os indicadores principais, depois os insights e, por fim, os gráficos que permitem investigar os detalhes.
 
